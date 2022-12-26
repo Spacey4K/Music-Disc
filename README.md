@@ -40,9 +40,9 @@ Supports **YouTube**, **Spotify**, **SoundCloud** streams.
 
 ### Clone the repository
 ```
-git clone -b v1.2.5 https://github.com/hmes98318/Music-Disc.git
+git clone https://github.com/Spacey4K/Music-Disc
 ```
-or [**click here**](https://github.com/hmes98318/Music-Disc/releases) to download  
+or [**click here**](https://github.com/Spacey4K/Music-Disc/archive/refs/heads/main.zip) to download  
 
 
 ### Install the dependencies
