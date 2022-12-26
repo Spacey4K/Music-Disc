@@ -7,9 +7,29 @@
 <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node%20Version->=16.13.0-brightgreen?style=for-the-badge&logo=Node.js"></a> 
 <a href="https://github.com/hmes98318/Music-Disc/blob/main/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/hmes98318/Music-Disc?style=for-the-badge&color=brightgreen"></a>  
 
-### Discord.js v14 Music Bot  
+## Discord.js v14 Music Bot  
 Supports **YouTube**, **Spotify**, **SoundCloud** streams.
 
+### Commands
+- `+back/rewind`
+- `+filter/f`
+- `+leave/stop`
+- `+loop/lp`
+- `+nowplaying/np`
+- `+pause`
+- `+ping`
+- `+play/p`
+- `+time/t`
+- `+queue/q, list`
+- `+remove/r`
+- `+resume`
+- `+save`
+- `+search/find`
+- `+server`
+- `+shuffle/random`
+- `+skip/s`
+- `+status/usage`
+- `+volume/v`
 
 ### Reference version  
 [**node.js  `v18.12.1`**](https://nodejs.org/en/)  
@@ -44,10 +64,13 @@ MAX_VOLUME = 100
 AUTO_LEAVE = true
 AUTO_LEAVE_COOLDOWN = 5000
 DISPLAY_VOICE_STATE = true
+GUILD_ID = ""
+
 ```
 **`AUTO_LEAVE`** : After the music finished, can choose whether let the bot leave voice channel automatically or not.  
 **`AUTO_LEAVE_COOLDOWN`** : Timer for auto disconnect(ms).  
 **`DISPLAY_VOICE_STATE`** : Show voice channel status updates.   
+**`GUILD_ID`** : ID of the server you want to deploy slash commands to.
 
 ## Running the script 
 ```
