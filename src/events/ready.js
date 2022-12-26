@@ -1,13 +1,12 @@
-const os = require('os');
-const { exec } = require('child_process');
 const Discord = require('discord.js');
 const package = require('../../package.json');
-
+const os = require('os');
+const { exec } = require('child_process');
 
 const color = { white: '\x1B[0m', cyan: '\x1B[36m' };
 
 
-module.exports = async (client) => {
+module.exports = async(client) => {
     client.status = {
         uptime: new Date(),
         os_version: await OSversion(),
@@ -24,16 +23,11 @@ module.exports = async (client) => {
     console.log(`| Discord.js: ${color.cyan}${client.status.discord_version}${color.white}\t|`);
     console.log(`+---------------------+`);
 
+    const commands = await client.application.commands.set(client.commands, client.config.guildId);
+    console.log(`Uploaded ${commands.size} commands to guild: ${client.config.guildId}`);
 
-    client.application.commands.set(client.commands.map(cmd => {
-        return {
-            name: cmd.name,
-            description: cmd.description,
-            options: cmd.options
-        }
-    }));
-    
-    client.user.setActivity(client.config.playing);
+
+    client.user.setActivity(client.config.playing, { type: 2 });
     console.log(`>>> Logged in as ${client.user.username}`);
 };
 
@@ -47,7 +41,7 @@ function OSversion() {
         return os.type();
 
     else if (platform === "linux")
-        return new Promise(function (resolve, reject) {
+        return new Promise(function(resolve, reject) {
             exec('cat /etc/*release | grep -E ^PRETTY_NAME',
                 (error, stdout, stderr) => {
                     if (error !== null) reject(error);

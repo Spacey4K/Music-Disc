@@ -44,7 +44,6 @@ MAX_VOLUME = 100
 AUTO_LEAVE = true
 AUTO_LEAVE_COOLDOWN = 5000
 DISPLAY_VOICE_STATE = true
-PORT = 33333
 ```
 **`AUTO_LEAVE`** : After the music finished, can choose whether let the bot leave voice channel automatically or not.  
 **`AUTO_LEAVE_COOLDOWN`** : Timer for auto disconnect(ms).  
