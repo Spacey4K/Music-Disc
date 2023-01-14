@@ -31,7 +31,7 @@ client.config.prefix = process.env.PREFIX || config.prefix;
 client.config.name = process.env.NAME || config.name;
 client.config.playing = process.env.PLAYING || config.playing;
 client.config.defaultVolume = Number(process.env.DEFAULTVOLUME || config.defaultVolume);
-client.config.maxVolume = Number(process.env.MAXVOLUME || config.maxVolume);
+client.config.maxVolume = Number(process.env.MAX_VOLUME || config.maxVolume);
 client.config.autoLeave = process.env.AUTO_LEAVE === 'true' ? true : false || config.autoLeave;
 client.config.autoLeaveCooldown = Number(process.env.AUTO_LEAVE_COOLDOWN || config.autoLeaveCooldown);
 client.config.displayVoiceState = process.env.DISPLAY_VOICE_STATE === 'true' ? true : false || config.displayVoiceState;
