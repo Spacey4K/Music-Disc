@@ -7,7 +7,7 @@ module.exports = {
         {
             name: "volume",
             description: "The volume to set",
-            type: 4,
+            type: 4, // int
             required: true,
             min_value: 1
         }

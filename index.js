@@ -10,7 +10,7 @@ const config = require('./config.json');
 const embed = require('./src/embeds/embeds');
 
 
-
+const loadCommands = require('./src/util/load-commands.js');
 
 let client = new Client({
     intents: [
@@ -43,7 +43,6 @@ client.config.ytdlOptions = {
     highWaterMark: 1 << 27 // about 134 mins
 };
 
-
 client.commands = new Collection();
 client.player = new Player(client, {
     ytdlOptions: client.config.ytdlOptions
@@ -59,7 +58,7 @@ const loadEvents = () => {
         for (const file of events) {
             try {
                 const event = require(`./src/events/${file}`);
-                console.log(`-> Loaded event ${file.split('.')[0]}`);
+                //console.log(`-> Loaded event ${file.split('.')[0]}`);
 
                 client.on(file.split('.')[0], event.bind(null, client));
                 delete require.cache[require.resolve(`./src/events/${file}`)];
@@ -72,41 +71,11 @@ const loadEvents = () => {
     });
 };
 
-const loadCommands = () => {
-    console.log(`-> loading commands ......`);
-    return new Promise((resolve, reject) => {
-        fs.readdir('./src/commands/', (err, files) => {
-            console.log(`+-----------------------------+`);
-            if (err)
-                return console.log('Could not find any commands!');
 
-            const jsFiles = files.filter(file => file.endsWith('.js'));
 
-            if (jsFiles.length <= 0)
-                return console.log('Could not find any commands!');
-
-            for (const file of jsFiles) {
-                try {
-                    const command = require(`./src/commands/${file}`);
-
-                    console.log(`| Loaded Command ${command.name.toLowerCase()}  \t|`);
-
-                    client.commands.set(command.name.toLowerCase(), command);
-                    delete require.cache[require.resolve(`./src/commands/${file}`)];
-                } catch (error) {
-                    reject(error);
-                }
-            };
-            console.log(`+-----------------------------+`);
-            console.log('-- loading Commands finished --');
-
-            resolve();
-        });
-    });
-};
-
-Promise.all([loadEvents(), loadCommands()])
-    .then(function() {
+Promise.all([loadCommands(), loadEvents()])
+    .then(([commands]) => {        
+        commands.forEach((c) => client.commands.set(c.name.toLowerCase(), c));
         console.log('\x1B[32m*** All loaded successfully ***\x1B[0m');
         client.login(process.env.TOKEN);
     });

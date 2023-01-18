@@ -23,8 +23,8 @@ module.exports = async(client) => {
     console.log(`| Discord.js: ${color.cyan}${client.status.discord_version}${color.white}\t|`);
     console.log(`+---------------------+`);
 
-    const commands = await client.application.commands.set(client.commands, client.config.guildId);
-    console.log(`Uploaded ${commands.size} commands to guild: ${client.config.guildId}`);
+    /* const commands = await client.application.commands.set(client.commands, client.config.guildId);
+    console.log(`Uploaded ${commands.size} commands to guild: ${client.config.guildId}`); */
 
 
     client.user.setActivity(client.config.playing, { type: 2 });

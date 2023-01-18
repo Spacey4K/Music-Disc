@@ -23,7 +23,7 @@ module.exports = (client, message) => {
     }
 
     if (cmd) {
-        console.log(`(${color.grey}${message.guild.name}${color.white}) ${message.author.username} : ${message.content}`);
+        // console.log(`(${color.grey}${message.guild.name}${color.white}) ${message.author.username} : ${message.content}`);
         cmd.execute(client, message, args);
     }
 };
