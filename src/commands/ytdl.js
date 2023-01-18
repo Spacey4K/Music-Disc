@@ -47,7 +47,11 @@ module.exports = {
 
         const res = getResponse(url);
         
-        await message.reply(res);
+        try {
+            await message.reply(res);
+        } catch (err) {
+            await message.reply({ content: err.toString(), allowedMentions: { repliedUser: false } });
+        }
     },
 
     async slashExecute(client, interaction) {
@@ -62,8 +66,11 @@ module.exports = {
 
         const res = getResponse(url, format, filter, quality);
 
-        await interaction.editReply(res);
-        
+        try {
+            await interaction.editReply(res);
+        } catch (err) {
+            await interaction.editReply({ content: err.toString(), ephemeral: true });
+        }
     },
 };
 
